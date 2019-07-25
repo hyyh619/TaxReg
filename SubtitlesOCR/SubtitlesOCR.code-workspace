@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"python.autoComplete.addBrackets": true,
+		"python1": "D:/tools/Anaconda2/envs/tensorflow13_python36/python",
+		"python.pythonPath": "C:\\Users\\hyyh6\\AppData\\Local\\conda\\conda\\envs\\tensorflow-python35\\python.exe"	
+	}
+}

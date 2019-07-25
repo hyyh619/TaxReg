@@ -1,0 +1,11 @@
+{
+    "CommanderX": 76, 
+    "CommanderY": 32, 
+    "ScreenCaptureWidth": 1920, 
+    "ScreenCaptureHeight": 1080,
+    "ProcessWidth": 1920,
+    "ProcessHeight": 1080, 
+    "ShowWidth": 1280,
+    "ShowHeight": 720, 
+    "TimePerFrame": 0.1 
+}

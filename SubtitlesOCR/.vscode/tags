@@ -1,0 +1,259 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AI	Main.py	/^import AI$/;"	kind:namespace	line:15
+AI.py	AI.py	1;"	kind:file	line:1
+AIImgReg	AIImgReg.py	/^class AIImgReg:$/;"	kind:class	line:17
+AIImgReg.py	AIImgReg.py	1;"	kind:file	line:1
+AddChild	MenuReg.py	/^    def AddChild(self, name, menu):$/;"	kind:member	line:24
+AipOcr	Image2OCR.py	/^from aip import AipOcr$/;"	kind:namespace	line:9
+BAIDU_OCR_API_KEY	Image2OCR.py	/^BAIDU_OCR_API_KEY     = 'gyfGXWZ0fCswzhM2Nd2HyDDH'$/;"	kind:variable	line:13
+BAIDU_OCR_APP_ID	Image2OCR.py	/^BAIDU_OCR_APP_ID      = '14641603'$/;"	kind:variable	line:12
+BAIDU_OCR_SECRET_KEY	Image2OCR.py	/^BAIDU_OCR_SECRET_KEY  = 'R1kR4Nq1hBaoLFomcvHYnCv4pxmKFI8Z'$/;"	kind:variable	line:14
+Button	KeyboardMouse.py	/^from pynput.mouse import Button, Controller$/;"	kind:namespace	line:12
+COMMON_CFG_FILE	Main.py	/^COMMON_CFG_FILE  = '.\/cfg\/common.json'$/;"	kind:variable	line:23
+CommonCfg	Main.py	/^class CommonCfg:$/;"	kind:class	line:28
+Controller	KeyboardMouse.py	/^from pynput.mouse import Button, Controller$/;"	kind:namespace	line:12
+CreateLog	Main.py	/^def CreateLog(loggerFile):$/;"	kind:function	line:58
+DigitalReg	ImageReg.py	/^class DigitalReg:$/;"	kind:class	line:182
+EVENT_INVALID	KeyboardMouse.py	/^EVENT_INVALID            = -1$/;"	kind:variable	line:16
+EVENT_KEYBOARD	KeyboardMouse.py	/^EVENT_KEYBOARD           = 20000$/;"	kind:variable	line:22
+EVENT_KEYBOARD_ALT_CHAR	KeyboardMouse.py	/^EVENT_KEYBOARD_ALT_CHAR  = EVENT_KEYBOARD + 2$/;"	kind:variable	line:24
+EVENT_KEYBOARD_CHAR	KeyboardMouse.py	/^EVENT_KEYBOARD_CHAR      = EVENT_KEYBOARD + 1$/;"	kind:variable	line:23
+EVENT_KEYBOARD_CTRL_CHAR	KeyboardMouse.py	/^EVENT_KEYBOARD_CTRL_CHAR = EVENT_KEYBOARD + 3$/;"	kind:variable	line:25
+EVENT_MOUSE	KeyboardMouse.py	/^EVENT_MOUSE              = 10000$/;"	kind:variable	line:17
+EVENT_MOUSE_LEFT_CLICK	KeyboardMouse.py	/^EVENT_MOUSE_LEFT_CLICK   = EVENT_MOUSE + 2$/;"	kind:variable	line:19
+EVENT_MOUSE_LEFT_DCLICK	KeyboardMouse.py	/^EVENT_MOUSE_LEFT_DCLICK  = EVENT_MOUSE + 4$/;"	kind:variable	line:21
+EVENT_MOUSE_RIGHT_CLICK	KeyboardMouse.py	/^EVENT_MOUSE_RIGHT_CLICK  = EVENT_MOUSE + 1$/;"	kind:variable	line:18
+EVENT_MOUSE_RIGHT_DCLICK	KeyboardMouse.py	/^EVENT_MOUSE_RIGHT_DCLICK = EVENT_MOUSE + 3$/;"	kind:variable	line:20
+FindAllTmplPosByState	ImageReg.py	/^    def FindAllTmplPosByState(self, frame, state, fThreshold = 0.01):$/;"	kind:member	line:152
+FindBestTmplByState	ImageReg.py	/^    def FindBestTmplByState(self, frame, state, fThreshold = 0.01):$/;"	kind:member	line:129
+FindName	OCRImageReg.py	/^    def FindName(self, name):$/;"	kind:member	line:106
+FrameCap	Main.py	/^import FrameCap$/;"	kind:namespace	line:16
+FrameCap.py	FrameCap.py	1;"	kind:file	line:1
+FrameCapture	FrameCap.py	/^class FrameCapture(threading.Thread):$/;"	kind:class	line:18
+GAME_DIPLOMACY_BUZHAN	GameState.py	/^GAME_DIPLOMACY_BUZHAN    = GAME_DIPLOMACY_STATE + 3$/;"	kind:variable	line:27
+GAME_DIPLOMACY_CHENCONG	GameState.py	/^GAME_DIPLOMACY_CHENCONG  = GAME_DIPLOMACY_STATE + 1$/;"	kind:variable	line:25
+GAME_DIPLOMACY_CONGSHU	GameState.py	/^GAME_DIPLOMACY_CONGSHU   = GAME_DIPLOMACY_STATE + 2$/;"	kind:variable	line:26
+GAME_DIPLOMACY_DIDUI	GameState.py	/^GAME_DIPLOMACY_DIDUI     = GAME_DIPLOMACY_STATE + 5$/;"	kind:variable	line:29
+GAME_DIPLOMACY_NAME_TO_STATE	GameState.py	/^GAME_DIPLOMACY_NAME_TO_STATE = {$/;"	kind:variable	line:64
+GAME_DIPLOMACY_STATE	GameState.py	/^GAME_DIPLOMACY_STATE     = GAME_PORT_UNKNOWN + 1$/;"	kind:variable	line:24
+GAME_DIPLOMACY_SUDI	GameState.py	/^GAME_DIPLOMACY_SUDI      = GAME_DIPLOMACY_STATE + 6$/;"	kind:variable	line:30
+GAME_DIPLOMACY_UNKNOWN	GameState.py	/^GAME_DIPLOMACY_UNKNOWN   = GAME_DIPLOMACY_STATE + 999$/;"	kind:variable	line:31
+GAME_DIPLOMACY_ZIJI	GameState.py	/^GAME_DIPLOMACY_ZIJI      = GAME_DIPLOMACY_STATE + 4$/;"	kind:variable	line:28
+GAME_PORT_COST	GameState.py	/^GAME_PORT_COST = {$/;"	kind:variable	line:57
+GAME_PORT_HANGHAIXUNLIAN	GameState.py	/^GAME_PORT_HANGHAIXUNLIAN = GAME_PORT_NAME + 1$/;"	kind:variable	line:18
+GAME_PORT_HEQUANJIE	GameState.py	/^GAME_PORT_HEQUANJIE      = GAME_PORT_NAME + 4$/;"	kind:variable	line:21
+GAME_PORT_NAME	GameState.py	/^GAME_PORT_NAME           = GAME_STAGE_UNKNOWN + 1$/;"	kind:variable	line:17
+GAME_PORT_NENGDENGQIWEI	GameState.py	/^GAME_PORT_NENGDENGQIWEI  = GAME_PORT_NAME + 2$/;"	kind:variable	line:19
+GAME_PORT_UNKNOWN	GameState.py	/^GAME_PORT_UNKNOWN        = GAME_PORT_NAME + 999$/;"	kind:variable	line:22
+GAME_PORT_YINQIXIXIANG	GameState.py	/^GAME_PORT_YINQIXIXIANG   = GAME_PORT_NAME + 3$/;"	kind:variable	line:20
+GAME_STAGE_AFFAIR	GameState.py	/^GAME_STAGE_AFFAIR        = GAME_STATE + 1$/;"	kind:variable	line:8
+GAME_STAGE_ARMAMENT	GameState.py	/^GAME_STAGE_ARMAMENT      = GAME_STATE + 2$/;"	kind:variable	line:9
+GAME_STAGE_ATTACK	GameState.py	/^GAME_STAGE_ATTACK        = GAME_STATE + 3$/;"	kind:variable	line:10
+GAME_STAGE_DIPLOMACY	GameState.py	/^GAME_STAGE_DIPLOMACY     = GAME_STATE + 4$/;"	kind:variable	line:11
+GAME_STAGE_EVENT	GameState.py	/^GAME_STAGE_EVENT         = GAME_STATE + 7$/;"	kind:variable	line:14
+GAME_STAGE_HUMANRESOURCE	GameState.py	/^GAME_STAGE_HUMANRESOURCE = GAME_STATE + 5$/;"	kind:variable	line:12
+GAME_STAGE_STRATEGY	GameState.py	/^GAME_STAGE_STRATEGY      = GAME_STATE + 6$/;"	kind:variable	line:13
+GAME_STAGE_UNKNOWN	GameState.py	/^GAME_STAGE_UNKNOWN       = GAME_STATE + 999$/;"	kind:variable	line:15
+GAME_STATE	GameState.py	/^GAME_STATE               = 30000$/;"	kind:variable	line:7
+GAME_STATE_NAME	GameState.py	/^GAME_STATE_NAME = {$/;"	kind:variable	line:34
+GameAI	AI.py	/^class GameAI:$/;"	kind:class	line:20
+GameDataAffairControl	GameDataRW.py	/^class GameDataAffairControl:$/;"	kind:class	line:33
+GameDataDiplomacy	GameDataRW.py	/^class GameDataDiplomacy:$/;"	kind:class	line:24
+GameDataGuo	GameDataRW.py	/^class GameDataGuo:$/;"	kind:class	line:13
+GameDataMgr	GameDataRW.py	/^class GameDataMgr:$/;"	kind:class	line:46
+GameDataRW.py	GameDataRW.py	1;"	kind:file	line:1
+GameState	GameState.py	/^class GameState:$/;"	kind:class	line:73
+GameState.py	GameState.py	1;"	kind:file	line:1
+GetAction	MenuReg.py	/^    def GetAction(self, name):$/;"	kind:member	line:86
+GetAffairControl	GameDataRW.py	/^    def GetAffairControl(self):$/;"	kind:member	line:91
+GetCharFromOCR	Image2OCR.py	/^def GetCharFromOCR(imgFile, ocr):$/;"	kind:function	line:69
+GetCurrentMoney	GameDataRW.py	/^    def GetCurrentMoney(self):$/;"	kind:member	line:68
+GetCurrentNum	ImageReg.py	/^    def GetCurrentNum(self, frame):$/;"	kind:member	line:232
+GetCurrentStage	ImageReg.py	/^    def GetCurrentStage(self, frame):$/;"	kind:member	line:95
+GetDeplomaticRelation	GameDataRW.py	/^    def GetDeplomaticRelation(self):$/;"	kind:member	line:188
+GetFrame	FrameCap.py	/^    def GetFrame(self):$/;"	kind:member	line:63
+GetLeaf	MenuReg.py	/^    def GetLeaf(self, name):$/;"	kind:member	line:27
+GetMatchTmpl	OCRImageReg.py	/^    def GetMatchTmpl(self, frame, fThreshold = 0.01):$/;"	kind:member	line:37
+GetMyGuo	GameDataRW.py	/^    def GetMyGuo(self):$/;"	kind:member	line:191
+GetOperationPos	OCRImageReg.py	/^    def GetOperationPos(self, name, frame, fThreshold, sleep):$/;"	kind:member	line:113
+GetResult	Image2OCR.py	/^    def GetResult(self, imgFile):$/;"	kind:member	line:26
+GetRootName	MenuReg.py	/^    def GetRootName(self):$/;"	kind:member	line:102
+GetTextOnly	Image2OCR.py	/^    def GetTextOnly(self, imgFile):$/;"	kind:member	line:49
+INPUT_EVENT_FILE	Main.py	/^INPUT_EVENT_FILE = '.\/cfg\/SE_1920_1080_InputEvent.json'$/;"	kind:variable	line:25
+Image2OCR	AIImgReg.py	/^import Image2OCR$/;"	kind:namespace	line:14
+Image2OCR	Main.py	/^import Image2OCR$/;"	kind:namespace	line:20
+Image2OCR.py	Image2OCR.py	1;"	kind:file	line:1
+ImageGrab	FrameCap.py	/^from PIL import ImageGrab$/;"	kind:namespace	line:12
+ImageReg	AI.py	/^import ImageReg$/;"	kind:namespace	line:12
+ImageReg	AIImgReg.py	/^import ImageReg$/;"	kind:namespace	line:8
+ImageReg	ImageReg.py	/^class ImageReg:$/;"	kind:class	line:63
+ImageReg	OCRImageReg.py	/^import ImageReg$/;"	kind:namespace	line:11
+ImageReg.py	ImageReg.py	1;"	kind:file	line:1
+ImgData	ImageReg.py	/^class ImgData:$/;"	kind:class	line:57
+InputEvent	AI.py	/^from KeyboardMouse import InputEvent$/;"	kind:namespace	line:14
+InputEvent	AIImgReg.py	/^from KeyboardMouse import InputEvent$/;"	kind:namespace	line:10
+InputEvent	KeyboardMouse.py	/^class InputEvent:$/;"	kind:class	line:27
+IsCommonCfgOK	Main.py	/^    def IsCommonCfgOK(self):$/;"	kind:member	line:54
+IsRunning	KeyboardMouse.py	/^    def IsRunning(self):$/;"	kind:member	line:92
+KeyboardInput	KeyboardMouse.py	/^    def KeyboardInput(self, type, char, sleep = 0.1):$/;"	kind:member	line:40
+KeyboardMouse	AI.py	/^import KeyboardMouse$/;"	kind:namespace	line:13
+KeyboardMouse	AIImgReg.py	/^import KeyboardMouse$/;"	kind:namespace	line:9
+KeyboardMouse	KeyboardMouse.py	/^class KeyboardMouse(threading.Thread):$/;"	kind:class	line:46
+KeyboardMouse	Main.py	/^import KeyboardMouse$/;"	kind:namespace	line:17
+KeyboardMouse.py	KeyboardMouse.py	1;"	kind:file	line:1
+LOGGER_CFG_FILE	Main.py	/^LOGGER_CFG_FILE  = '.\/cfg\/AILog.ini'$/;"	kind:variable	line:24
+Main.py	Main.py	1;"	kind:file	line:1
+MatchTemplate	ImageReg.py	/^def MatchTemplate(src, temp, fThreshold, method = TEMPLATE_MATCH_METHODS[5]):$/;"	kind:function	line:23
+Menu	MenuReg.py	/^class Menu:$/;"	kind:class	line:11
+MenuReg	AI.py	/^import MenuReg$/;"	kind:namespace	line:18
+MenuReg	AIImgReg.py	/^import MenuReg$/;"	kind:namespace	line:13
+MenuReg.py	MenuReg.py	1;"	kind:file	line:1
+Menus	MenuReg.py	/^class Menus:$/;"	kind:class	line:38
+MouseClick	KeyboardMouse.py	/^    def MouseClick(self, type, x, y, sleep = 0.1):$/;"	kind:member	line:33
+OCRImagePair	OCRImageReg.py	/^class OCRImagePair:$/;"	kind:class	line:14
+OCRImageReg	MenuReg.py	/^import OCRImageReg$/;"	kind:namespace	line:8
+OCRImageReg.py	OCRImageReg.py	1;"	kind:file	line:1
+OCRImageTmpls	OCRImageReg.py	/^class OCRImageTmpls:$/;"	kind:class	line:67
+OCRReg	Image2OCR.py	/^class OCRReg:$/;"	kind:class	line:17
+OCRTemplate	OCRImageReg.py	/^class OCRTemplate:$/;"	kind:class	line:19
+OnPress	KeyboardMouse.py	/^    def OnPress(self, key):$/;"	kind:member	line:136
+OnRelease	KeyboardMouse.py	/^    def OnRelease(self, key):$/;"	kind:member	line:145
+PopEvent	KeyboardMouse.py	/^    def PopEvent(self):$/;"	kind:member	line:115
+ProcessImgFiles	Main.py	/^def ProcessImgFiles(folder):$/;"	kind:function	line:97
+ProcessOCR	Image2OCR.py	/^def ProcessOCR(folder, logger):$/;"	kind:function	line:89
+PushEvent	KeyboardMouse.py	/^    def PushEvent(self, inputEvent):$/;"	kind:member	line:110
+Run	AI.py	/^    def Run(self):$/;"	kind:member	line:375
+SetCurrentBattleshipNum	GameDataRW.py	/^    def SetCurrentBattleshipNum(self, name, num):$/;"	kind:member	line:74
+SetCurrentMoney	GameDataRW.py	/^    def SetCurrentMoney(self, money):$/;"	kind:member	line:65
+SetCurrentShipNum	GameDataRW.py	/^    def SetCurrentShipNum(self, name, num):$/;"	kind:member	line:71
+TEMPLATE_MATCH_METHODS	ImageReg.py	/^TEMPLATE_MATCH_METHODS = [$/;"	kind:variable	line:14
+TemplateImage	ImageReg.py	/^class TemplateImage:$/;"	kind:class	line:35
+UpdateControlFromFile	GameDataRW.py	/^    def UpdateControlFromFile(self):$/;"	kind:member	line:77
+UpdateStateToFile	GameDataRW.py	/^    def UpdateStateToFile(self):$/;"	kind:member	line:94
+_AffairBuildBattleShip	AI.py	/^    def _AffairBuildBattleShip(self, name, guoInfo, moneyThreshold = 100000):$/;"	kind:member	line:151
+_AffairBuildShip	AI.py	/^    def _AffairBuildShip(self, name, guoInfo, moneyThreshold = 50000):$/;"	kind:member	line:260
+_AffairKuangShanKaiFa	AI.py	/^    def _AffairKuangShanKaiFa(self, name, moneyThreshold = 50000):$/;"	kind:member	line:241
+_AffairLeShiLeZuo	AI.py	/^    def _AffairLeShiLeZuo(self, name, moneyThreshold = 10000):$/;"	kind:member	line:203
+_AffairShipSail	AI.py	/^    def _AffairShipSail(self, name, guoInfo, moneyThreshold = 50000):$/;"	kind:member	line:300
+_AffairXinTianKaiKen	AI.py	/^    def _AffairXinTianKaiKen(self, name, moneyThreshold = 50000):$/;"	kind:member	line:222
+_CreateBuildBattleshipImgReg	AIImgReg.py	/^    def _CreateBuildBattleshipImgReg(self, logger, dataFolder):$/;"	kind:member	line:100
+_CreateCityImgReg	AIImgReg.py	/^    def _CreateCityImgReg(self, logger, dataFolder):$/;"	kind:member	line:146
+_CreateEventDict	KeyboardMouse.py	/^    def _CreateEventDict(self):$/;"	kind:member	line:121
+_CreateGameDataMgr	AI.py	/^    def _CreateGameDataMgr(self):$/;"	kind:member	line:49
+_CreateImgReg	AI.py	/^    def _CreateImgReg(self, logger, dataFolder):$/;"	kind:member	line:52
+_CreateImgReg	AIImgReg.py	/^    def _CreateImgReg(self, logger, dataFolder):$/;"	kind:member	line:181
+_CreateMenus	AI.py	/^    def _CreateMenus(self, folder):$/;"	kind:member	line:55
+_CreateMoneyReg	AIImgReg.py	/^    def _CreateMoneyReg(self, logger, dataFolder):$/;"	kind:member	line:22
+_CreatePortImgReg	AIImgReg.py	/^    def _CreatePortImgReg(self, logger, dataFolder):$/;"	kind:member	line:119
+_CreateShipNumReg	AIImgReg.py	/^    def _CreateShipNumReg(self, logger, dataFolder):$/;"	kind:member	line:45
+_CreateStageImgReg	AIImgReg.py	/^    def _CreateStageImgReg(self, logger, dataFolder):$/;"	kind:member	line:62
+_DoAffairStage	AI.py	/^    def _DoAffairStage(self):$/;"	kind:member	line:339
+_DoDiplomacyStage	AI.py	/^    def _DoDiplomacyStage(self):$/;"	kind:member	line:358
+_DoMenuAction	AI.py	/^    def _DoMenuAction(self, name):$/;"	kind:member	line:86
+_DoNothing	AI.py	/^    def _DoNothing(self):$/;"	kind:member	line:372
+_ExecuteInputEvent	KeyboardMouse.py	/^    def _ExecuteInputEvent(self, inputEvent):$/;"	kind:member	line:162
+_ExecuteKeyboardEvent	KeyboardMouse.py	/^    def _ExecuteKeyboardEvent(self, inputEvent):$/;"	kind:member	line:198
+_ExecuteMouseEvent	KeyboardMouse.py	/^    def _ExecuteMouseEvent(self, inputEvent):$/;"	kind:member	line:170
+_GetEventName	KeyboardMouse.py	/^    def _GetEventName(self, eventType):$/;"	kind:member	line:133
+_GetFileContent	Image2OCR.py	/^    def _GetFileContent(self, filePath):$/;"	kind:member	line:22
+_GetNextFrame	FrameCap.py	/^    def _GetNextFrame(self):$/;"	kind:member	line:43
+_GetOneDigital	ImageReg.py	/^    def _GetOneDigital(self, pos, frame):$/;"	kind:member	line:200
+_InitAction	AI.py	/^    def _InitAction(self):$/;"	kind:member	line:46
+_InitShortKeyState	KeyboardMouse.py	/^    def _InitShortKeyState(self):$/;"	kind:member	line:69
+_KeyBoardListener	KeyboardMouse.py	/^    def _KeyBoardListener(self):$/;"	kind:member	line:155
+_LoadCommonParams	AI.py	/^    def _LoadCommonParams(self, commonCfg):$/;"	kind:member	line:58
+_LoadCommonParams	KeyboardMouse.py	/^    def _LoadCommonParams(self, commonCfg):$/;"	kind:member	line:98
+_LoadCommonParams	Main.py	/^    def _LoadCommonParams(self, commonFile):$/;"	kind:member	line:34
+_LoadDaMing	GameDataRW.py	/^    def _LoadDaMing(self, sheet):$/;"	kind:member	line:151
+_LoadData	GameDataRW.py	/^    def _LoadData(self, dataFile):$/;"	kind:member	line:130
+_LoadDigitals	ImageReg.py	/^    def _LoadDigitals(self, digitalFileList):$/;"	kind:member	line:188
+_LoadDiplomaticRelation	GameDataRW.py	/^    def _LoadDiplomaticRelation(self, sheet):$/;"	kind:member	line:172
+_LoadFiles	OCRImageReg.py	/^    def _LoadFiles(self, imgFile):$/;"	kind:member	line:76
+_LoadGuo	GameDataRW.py	/^    def _LoadGuo(self, sheet):$/;"	kind:member	line:155
+_LoadImg	ImageReg.py	/^    def _LoadImg(self, fileName, imgWRatio, imgHRatio):$/;"	kind:member	line:41
+_LoadInputEvent	AI.py	/^    def _LoadInputEvent(self, inputEvent):$/;"	kind:member	line:61
+_LoadMenu	MenuReg.py	/^    def _LoadMenu(self, imgFile):$/;"	kind:member	line:21
+_LoadMenus	MenuReg.py	/^    def _LoadMenus(self, folder, parentMenu, bRoot = False):$/;"	kind:member	line:47
+_LoadResources	ImageReg.py	/^    def _LoadResources(self, imgDataList):$/;"	kind:member	line:84
+_MouseLClick	AI.py	/^    def _MouseLClick(self, x, y):$/;"	kind:member	line:143
+_ReadCommonCfg	FrameCap.py	/^    def _ReadCommonCfg(self, commonCfg):$/;"	kind:member	line:29
+_ScaleImgToProcessSize	ImageReg.py	/^    def _ScaleImgToProcessSize(self, img):$/;"	kind:member	line:78
+_ScaleImgToProcessSize	ImageReg.py	/^    def _ScaleImgToProcessSize(self, img, imgWRatio, imgHRatio):$/;"	kind:member	line:50
+_SelectGuo	AI.py	/^    def _SelectGuo(self, name):$/;"	kind:member	line:148
+_SetFrame	FrameCap.py	/^    def _SetFrame(self, frame):$/;"	kind:member	line:58
+_SetLCtrlState	KeyboardMouse.py	/^    def _SetLCtrlState(self, bPress):$/;"	kind:member	line:74
+_SetRunningFlag	KeyboardMouse.py	/^    def _SetRunningFlag(self, key):$/;"	kind:member	line:81
+_Sleep	AI.py	/^    def _Sleep(self, eventSleep):$/;"	kind:member	line:77
+_Sleep	FrameCap.py	/^    def _Sleep(self):$/;"	kind:member	line:34
+_Sleep	KeyboardMouse.py	/^    def _Sleep(self):$/;"	kind:member	line:101
+__init__	AI.py	/^    def __init__(self, commonCfg, logger, inputFile, controller, frameGrabber, dataFolder='.\/data'):$/;"	kind:member	line:21
+__init__	AIImgReg.py	/^    def __init__(self, logger, dataFolder):$/;"	kind:member	line:18
+__init__	FrameCap.py	/^    def __init__(self, logger, commonCfg):$/;"	kind:member	line:19
+__init__	GameDataRW.py	/^    def __init__(self):$/;"	kind:member	line:34
+__init__	GameDataRW.py	/^    def __init__(self, guoName, daMingName, relation, command):$/;"	kind:member	line:25
+__init__	GameDataRW.py	/^    def __init__(self, logger, dataFile):$/;"	kind:member	line:47
+__init__	GameDataRW.py	/^    def __init__(self, name, bHasPort, shipNum, bHasBattleship, battleshipNum):$/;"	kind:member	line:14
+__init__	GameState.py	/^    def __init__(self):$/;"	kind:member	line:74
+__init__	Image2OCR.py	/^    def __init__(self, logger):$/;"	kind:member	line:18
+__init__	ImageReg.py	/^    def __init__(self, fileName, ROI, state):$/;"	kind:member	line:58
+__init__	ImageReg.py	/^    def __init__(self, fileName, imgWRatio, imgHRatio, ROI = None):$/;"	kind:member	line:36
+__init__	ImageReg.py	/^    def __init__(self, logger, digitalFileList, digitalPosList):$/;"	kind:member	line:183
+__init__	ImageReg.py	/^    def __init__(self, logger, imgDataList, processWidth=1920, processHeight=1080):$/;"	kind:member	line:64
+__init__	KeyboardMouse.py	/^    def __init__(self, eventType, bBack = False):$/;"	kind:member	line:28
+__init__	KeyboardMouse.py	/^    def __init__(self, logger, commonCfg):$/;"	kind:member	line:47
+__init__	Main.py	/^    def __init__(self, logger, commonFile):$/;"	kind:member	line:29
+__init__	MenuReg.py	/^    def __init__(self, logger, folder):$/;"	kind:member	line:39
+__init__	MenuReg.py	/^    def __init__(self, logger, name, imgFile, parent = None):$/;"	kind:member	line:12
+__init__	OCRImageReg.py	/^    def __init__(self, image, ocr):$/;"	kind:member	line:15
+__init__	OCRImageReg.py	/^    def __init__(self, logger, imgFile):$/;"	kind:member	line:68
+__init__	OCRImageReg.py	/^    def __init__(self, name, image, searchRect, tmplRect):$/;"	kind:member	line:20
+config	Main.py	/^import logging.config$/;"	kind:namespace	line:12
+copy	GameDataRW.py	/^from xlutils.copy import copy$/;"	kind:namespace	line:8
+cv2	FrameCap.py	/^import cv2$/;"	kind:namespace	line:13
+cv2	ImageReg.py	/^import cv2$/;"	kind:namespace	line:7
+cv2	Main.py	/^import cv2$/;"	kind:namespace	line:18
+cv2	OCRImageReg.py	/^import cv2$/;"	kind:namespace	line:7
+json	AI.py	/^import json$/;"	kind:namespace	line:10
+json	FrameCap.py	/^import json$/;"	kind:namespace	line:11
+json	GameDataRW.py	/^import json$/;"	kind:namespace	line:7
+json	Image2OCR.py	/^import json$/;"	kind:namespace	line:8
+json	KeyboardMouse.py	/^import json$/;"	kind:namespace	line:9
+json	Main.py	/^import json$/;"	kind:namespace	line:14
+json	OCRImageReg.py	/^import json$/;"	kind:namespace	line:8
+keyboard	KeyboardMouse.py	/^from pynput import keyboard$/;"	kind:namespace	line:13
+logger	Main.py	/^    logger = CreateLog(LOGGER_CFG_FILE)$/;"	kind:variable	line:132
+logging	Main.py	/^import logging$/;"	kind:namespace	line:11
+logging	Main.py	/^import logging.config$/;"	kind:namespace	line:12
+main	Main.py	/^def main(logger):$/;"	kind:function	line:73
+math	ImageReg.py	/^import math$/;"	kind:namespace	line:9
+np	FrameCap.py	/^import numpy as np$/;"	kind:namespace	line:14
+np	ImageReg.py	/^import numpy as np$/;"	kind:namespace	line:8
+np	Main.py	/^import numpy as np$/;"	kind:namespace	line:19
+np	OCRImageReg.py	/^import numpy as np$/;"	kind:namespace	line:10
+os	AI.py	/^import os$/;"	kind:namespace	line:9
+os	FrameCap.py	/^import os$/;"	kind:namespace	line:10
+os	Image2OCR.py	/^import os$/;"	kind:namespace	line:7
+os	KeyboardMouse.py	/^import os$/;"	kind:namespace	line:11
+os	Main.py	/^import os$/;"	kind:namespace	line:9
+os	MenuReg.py	/^import os$/;"	kind:namespace	line:7
+queue	FrameCap.py	/^import queue$/;"	kind:namespace	line:15
+queue	KeyboardMouse.py	/^import queue$/;"	kind:namespace	line:10
+run	FrameCap.py	/^    def run(self):$/;"	kind:member	line:69
+run	KeyboardMouse.py	/^    def run(self):$/;"	kind:member	line:201
+schedule	FrameCap.py	/^import schedule$/;"	kind:namespace	line:8
+threading	FrameCap.py	/^import threading$/;"	kind:namespace	line:7
+threading	KeyboardMouse.py	/^import threading$/;"	kind:namespace	line:7
+threading	Main.py	/^import threading$/;"	kind:namespace	line:10
+time	AI.py	/^import time$/;"	kind:namespace	line:11
+time	AIImgReg.py	/^import time$/;"	kind:namespace	line:7
+time	FrameCap.py	/^import time$/;"	kind:namespace	line:9
+time	KeyboardMouse.py	/^import time$/;"	kind:namespace	line:8
+time	Main.py	/^import time$/;"	kind:namespace	line:13
+time	OCRImageReg.py	/^import time$/;"	kind:namespace	line:9
+xlrd	GameDataRW.py	/^import xlrd$/;"	kind:namespace	line:9
+xlwt	GameDataRW.py	/^import xlwt$/;"	kind:namespace	line:10

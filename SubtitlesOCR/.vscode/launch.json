@@ -1,0 +1,102 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python-SurfaceGo: Main.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/Main.py",
+            "cwd": "./",
+            "pythonPath": "C:/Users/hyyh6/AppData/Local/conda/conda/envs/tensorflow-python35/python.exe"
+        },
+        {
+            "name": "Python-MSI: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "pythonPath": "C:/Users/hyyh6/AppData/Local/conda/conda/envs/tensorflow-python35/python.exe"
+        },
+        {
+            "name": "Python-MSI: Main.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/Main.py",
+            "cwd": "./",
+            "pythonPath": "C:/Users/hyyh6/AppData/Local/conda/conda/envs/tensorflow-python35/python.exe"
+        },
+        {
+            "name": "Python-Macbook-15: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "pythonPath": "/Users/benethuang/.conda/envs/tensorflow-python35/bin/python"
+        },
+        {
+            "name": "Python-S5-tf13_py36: main file",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/Main.py",
+            "cwd": "./",
+            "pythonPath": "D:/tools/Anaconda2/envs/tensorflow13_python36/python"
+        },
+        {
+            "name": "Python: Current File (Integrated Terminal)",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: Attach",
+            "type": "python",
+            "request": "attach",
+            "port": 5678,
+            "host": "localhost"
+        },
+        {
+            "name": "Python: Module",
+            "type": "python",
+            "request": "launch",
+            "module": "enter-your-module-name-here",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: Django",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/manage.py",
+            "console": "integratedTerminal",
+            "args": [
+                "runserver",
+                "--noreload",
+                "--nothreading"
+            ],
+            "django": true
+        },
+        {
+            "name": "Python: Flask",
+            "type": "python",
+            "request": "launch",
+            "module": "flask",
+            "env": {
+                "FLASK_APP": "app.py"
+            },
+            "args": [
+                "run",
+                "--no-debugger",
+                "--no-reload"
+            ],
+            "jinja": true
+        },
+        {
+            "name": "Python: Current File (External Terminal)",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "externalTerminal"
+        }
+    ]
+}

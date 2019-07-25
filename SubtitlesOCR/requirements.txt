@@ -1,0 +1,26 @@
+﻿1. OCR
+1.1 使用开源的Tesseract
+install tesseract-ocr-setup-4.00.00dev.exe
+Path环境变量设置C:\Program Files (x86)\Tesseract-OCR\
+TESSDATA_PREFIX环境变量设置C:\Program Files (x86)\Tesseract-OCR\tessdata
+重启电脑
+pip install pytesseract
+
+1.2 使用百度的OCR（在线方式）
+pip install baidu-aip
+
+2. excel表格读写
+pip install xlwt
+pip install xlrd
+pip install xlutils
+
+3. 图像处理模块安装
+pip install pillow
+conda install -c menpo opencv3
+
+4. 键盘鼠标控制
+pip install pynput
+
+4. 其他依赖安装
+pip install schedule
+
