@@ -1,1 +1,5 @@
 ﻿*.json~
+*.pyc
+*.swp
+*.ini~
+SubtitlesOCR/log/subtitles.log
