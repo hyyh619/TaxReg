@@ -5,6 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python-T450",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "./",
+            "pythonPath": "E:/tools/Anaconda3/envs/tensorflow-python35/python.exe"
+        },        
+        {
             "name": "Python-SurfaceGo: Main.py",
             "type": "python",
             "request": "launch",
