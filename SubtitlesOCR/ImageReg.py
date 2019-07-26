@@ -8,7 +8,6 @@ import os
 import cv2
 import numpy as np
 import math
-from GameState import *
 
 
 # All the 6 methods for comparison in a list
@@ -667,8 +666,8 @@ class CharacterReg:
             i += 1
 
             if char == GAME_STAGE_UNKNOWN or \
-               char == 'Non' or \
-               char.find('Wrong') >= 0:
+                char == 'Non' or \
+                char.find('Wrong') >= 0:
                 continue
 
             if len(char) > 1:
@@ -677,3 +676,27 @@ class CharacterReg:
                 name += char
 
         return name
+
+
+def FilledSubtitleImg(img, avgColor=100, diffVal=10, filledColor=(0, 0, 0)):
+    charImg = img.copy()
+    w = charImg.shape[1]
+    h = charImg.shape[0]
+    for i in range(w):
+        for j in range(h):
+            pixel = charImg[j][i]
+            if pixel[0] < avgColor and pixel[1] < avgColor and pixel[2] < avgColor:
+                charImg[j][i] = filledColor
+
+            if i == 34 and j == 8:
+                print(pixel)
+
+            diff1 = abs(int(pixel[0]) - int(pixel[1]))
+            diff2 = abs(int(pixel[0]) - int(pixel[2]))
+            diff3 = abs(int(pixel[1]) - int(pixel[2]))
+            if diff1 > diffVal or \
+                diff2 > diffVal or \
+                diff3 > diffVal:
+                charImg[j][i] = filledColor
+
+    return charImg

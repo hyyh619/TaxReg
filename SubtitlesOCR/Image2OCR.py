@@ -48,39 +48,7 @@ class OCRReg:
 
         return resultLow, resultHigh, resultHighPos
 
-    def GetTextOnly(self, cv2Img, fillColor = 255):
-        imgFile = './tmp/text.png'
-        if cv2Img.shape[0] < 15 and cv2Img.shape[1] < 15:
-            w = cv2Img.shape[1]
-            h = cv2Img.shape[0]
-            newImg = np.zeros((h + 10, w+10, 3), dtype=np.uint8)
-            for i in range(h+10):
-                for j in range(w+10):
-                    newImg[i][j] = fillColor
-
-            newImg[5:h+5, 5:w+5] = cv2Img[0:h, 0:w]
-        elif cv2Img.shape[0] < 15:
-            w = cv2Img.shape[1]
-            h = cv2Img.shape[0]
-            newImg = np.zeros((h + 10, w, 3), dtype=np.uint8)
-            for i in range(h+10):
-                for j in range(w):
-                    newImg[i][j] = fillColor
-
-            newImg[5:h+5, 0:w] = cv2Img[0:h, 0:w]
-        elif cv2Img.shape[1] < 15:
-            w = cv2Img.shape[1]
-            h = cv2Img.shape[0]
-            newImg = np.zeros((h, w + 10, 3), dtype=np.uint8)
-            for i in range(h):
-                for j in range(w+10):
-                    newImg[i][j] = fillColor
-
-            newImg[0:h, 5:w+5] = cv2Img[0:h, 0:w]
-        else:
-            newImg = cv2Img
-
-        cv2.imwrite(imgFile, newImg)
+    def GetTextOnly(self, imgFile):
         img = self._GetFileContent(imgFile)
 
         """ 如果有可选参数 """

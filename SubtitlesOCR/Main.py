@@ -12,7 +12,6 @@ import logging
 import logging.config
 import time
 import json
-import AI
 import FrameCap
 import KeyboardMouse
 import cv2
@@ -22,7 +21,7 @@ import ImageReg
 
 
 COMMON_CFG_FILE  = './cfg/common.json'
-LOGGER_CFG_FILE  = './cfg/AILog.ini'
+LOGGER_CFG_FILE  = './cfg/SubtitlesLog.ini'
 INPUT_EVENT_FILE = './cfg/SE_1920_1080_InputEvent.json'
 
 
@@ -61,170 +60,49 @@ def CreateLog(loggerFile):
     if not os.path.exists(logPath):
         os.mkdir(logPath)
 
-    logPath = "./log/AI"
-    if not os.path.exists(logPath):
-        os.mkdir(logPath)
+    # logPath = "./log/AI"
+    # if not os.path.exists(logPath):
+    #     os.mkdir(logPath)
 
     logging.config.fileConfig(loggerFile)
-    logger = logging.getLogger('ai')
+    logger = logging.getLogger('Subtitles')
     logger.info('Create logger success')
     return logger
 
 
-def main(logger):
-    # Read Common file
-    commonCfg1 = CommonCfg(logger, COMMON_CFG_FILE)
+def Main():
+    logger = CreateLog(LOGGER_CFG_FILE)
 
-    if commonCfg1.IsCommonCfgOK() is False:
-        logger.error('Read common file failed.')
-        return
+    ocrReg = Image2OCR.OCRReg(logger)
+    img = cv2.imread("./tmp/Test1.png")
 
-    # Create frame capture thread.
-    frameGrab = FrameCap.FrameCapture(logger, commonCfg1)
-    frameGrab.start()
+    charOrigImg = img[408:408+26, 322:322+164, 0:3]
+    # cv2.imshow('image', charOrigImg)
+    # k = cv2.waitKey(0)
+    # if k == ord('s'):
+    #     cv2.imwrite("./tmp/char.png", charImg)
 
-    # Create controller
-    controller = KeyboardMouse.KeyboardMouse(logger, commonCfg1)
-    controller.start()
+    # black background
+    # (158, 158, 156), (159, 159, 159), (174, 174, 174)
+    # (166, 166, 166), (81, 86, 79), (97, 98, 107), (162, 152, 151)
+    enhanceColor = (255, 255, 255)
+    filledColor = (0, 0, 0)
+    diffVal = 10
+    avgColor = 100
 
-    time.sleep(1)
-
-    # Create AI and run.
-    aiAgent = AI.GameAI(commonCfg1, logger, INPUT_EVENT_FILE, controller, frameGrab)
-    aiAgent.Run()
-    return
-
-
-def ProcessImgFiles(folder, mode):
-    charReg = ImageReg.CharacterReg(logger, './data/WhiteChar')
-    agentList = []
-
-    for root, dirs, files in os.walk(folder):
-        # print('root_dir:', root)  # 当前目录路径
-        # print('sub_dirs:', dirs)  # 当前路径下所有子目录
-        # print('files:', files)  # 当前路径下所有非目录子文件
-
-        list = files  # 列出文件夹下所有的目录与文件
-        for i in range(0, len(list)):
-            path = os.path.join(root, list[i])
-            if os.path.isfile(path) and (path.find('png') >= 0 or path.find('bmp') >= 0):
-                bPng = path.find('png')
-                bBmp = path.find('bmp')
-
-                img = cv2.imdecode(np.fromfile(path, dtype=np.uint8), cv2.IMREAD_UNCHANGED)
-
-                if mode == 1:
-                    if img.shape[1] > 1920:
-                        if img.shape[0] == 1080:
-                            newImg = img[0:1080, 0:1920]
-                        elif img.shape[0] == 1201 or img.shape[0] == 1205:
-                            newImg = img[0:1080, 0:1920]
-                        else:
-                            continue
-
-                        (shotname, extension) = os.path.splitext(path)
-                        newFilePath = shotname + '.png'
-                        cv2.imencode('.png', newImg)[1].tofile(newFilePath)
-                    elif path.find('bmp') >= 0:
-                        (shotname, extension) = os.path.splitext(path)
-                        newFilePath = shotname + '.png'
-                        cv2.imencode('.png', img)[1].tofile(newFilePath)
-                elif mode == 2:
-                    if img.shape[1] == 82 and img.shape[0] == 14:
-                        newImg = img[1:13, :]
-                        cv2.imencode('.png', newImg)[1].tofile(path)
-                elif mode == 3:
-                    if path.find('无人') >= 0:
-                        continue
-
-                    newImg = ImageReg.CutSpaceFromImg(img)
-                    cv2.imencode('.png', newImg)[1].tofile(path)
-                elif mode == 4:
-                    (shotname, extension) = os.path.splitext(list[i])
-                    GenerateChar(charReg, img, shotname, 11, 11)
-                elif mode == 5:
-                    newImg = FillColor(img, "./data/WhiteChar/test.png")
-                    newImg = ImageReg.CutSpaceFromImg(newImg, 20, 'gt')
-                    cv2.imwrite('./data/WhiteChar/test1.png', newImg)
-
-
-
-def FillColor(img, savedFile): 
-    newImg = ImageReg.FillImgWithColor(img, (190, 190, 190), (0, 0, 0))
-    cv2.imencode('.png', img)[1].tofile(savedFile)
-    return newImg
-
-
-def GenerateChar(charReg, img, name, minWidth = 8, minHeight = 10):
-    dstFolder = './data/WhiteChar'
-    nameLen = len(name)
-    print (name)
-
-    img = FillColor(img, "./data/WhiteChar/test.png")
-    img = ImageReg.CutSpaceFromImg(img, 20, 'gt')
-
-    w = img.shape[1]
-    h = img.shape[0]
-
-    src = img
-    left = ImageReg.FindLeftNoVerticalSpaceLine(src, 128, 'gt')
-    right = 0
-    i = 0
-
-    while (1):
-        if left >= w or (w - left) < 9:
-            break
-
-        # Find character first
-        if (left + 17) > w:
-            charImg = src[:, left:]
-        else:
-            charImg = src[:, left:left+17]
-        char = charReg.GetCharByRegion(charImg, (0, 0, charImg.shape[1], charImg.shape[0]), None, minWidth, minHeight, 128, 'gt')
-
-        right = left
-
-        charW = ImageReg.FindLeftVerticalSpaceLine(src[:,left:], 128, 'gt')
-        if minWidth == 14 and char == '山':
-            right += charW
-        else:
-            while charW < minWidth:
-                charW += 1 # skip vertical line, such as '村', '小'
-                newLeft = charW + left
-                charW += ImageReg.FindLeftVerticalSpaceLine(src[:,newLeft:], 128, 'gt')
-            right += charW
-
-        if right > w:
-            break
-
-        charImg = src[:,left:right]
-        charImg = ImageReg.CutSpaceFromImg(charImg, 128, 'gt')
-        if charImg is None:
-            break
-
-        if char == '':
-            charName = name[i]
-            imgFile = '{0}/{1}.png'.format(dstFolder, charName)
-
-            if not os.path.exists(imgFile):
-                cv2.imencode('.png', charImg)[1].tofile(imgFile)
-            else:
-                for i in range(10):
-                    imgFile = '{0}/{1}{2}.png'.format(dstFolder, charName, i)
-                    if not os.path.exists(imgFile):
-                        cv2.imencode('.png', charImg)[1].tofile(imgFile)
-                        break
-
-        left += charW
-        left += ImageReg.FindLeftNoVerticalSpaceLine(src[:, left:], 128, 'gt')
-        i += 1
+    # Save subtitle only.
+    charImg = ImageReg.FilledSubtitleImg(charOrigImg, avgColor, diffVal, filledColor)
+    name = "./tmp/subtitle-{}.png".format(diffVal)
+    cv2.imwrite(name, charImg)
+    result = ocrReg.GetTextOnly("./tmp/charFilled-13.png")
+    logger.info(result)
 
 
 if __name__ == '__main__':
     # noise_t = np.random.normal(loc=0, scale=0.1, size=7)
     # index = np.argmax(noise_t)
     # Create logger.
-    logger = CreateLog(LOGGER_CFG_FILE)
+    # logger = CreateLog(LOGGER_CFG_FILE)
 
     # main(logger)
 
@@ -232,8 +110,10 @@ if __name__ == '__main__':
     # 2：去掉城名的上下两根空白横线
     # 3：去掉字符串图片的左右两边的空白
     # 4：根据字符串图片生成一个个中文字符
-    ProcessImgFiles('./tmp', 1)
+    # ProcessImgFiles('./tmp', 1)
 
     # text = Image2OCR.ProcessOneImgOCR('./tmp/龟山城-大地图.png', logger)
 
     # Image2OCR.ProcessOCR('./data/Pic', logger)
+
+    Main()
