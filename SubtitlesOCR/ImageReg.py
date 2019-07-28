@@ -516,8 +516,8 @@ class CharacterReg:
                 if path.find('png') < 0 and path.find('bmp') < 0:
                     continue
                 if path.find('CharImg') >= 0 or \
-                   path.find('test') >= 0 or \
-                   path.find('Non') >= 0:
+                    path.find('test') >= 0 or \
+                    path.find('Non') >= 0:
                     continue
 
                 fileName = path
@@ -688,8 +688,8 @@ def FilledSubtitleImg(img, avgColor=100, diffVal=10, filledColor=(0, 0, 0)):
             if pixel[0] < avgColor and pixel[1] < avgColor and pixel[2] < avgColor:
                 charImg[j][i] = filledColor
 
-            if i == 34 and j == 8:
-                print(pixel)
+            # if i == 34 and j == 8:
+            #     print(pixel)
 
             diff1 = abs(int(pixel[0]) - int(pixel[1]))
             diff2 = abs(int(pixel[0]) - int(pixel[2]))

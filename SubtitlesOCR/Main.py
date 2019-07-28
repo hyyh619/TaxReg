@@ -95,89 +95,77 @@ def TestImgProcess(ocrReg, logger):
     logger.info(result)
 
 
-def CheckDuplicatedImg(imgDir, logger, threshold=0.45, saveDir="./tmp/02-subtitles-NoDuplicated-pre-0.45-1030x60/"):
-    counter = 0
-    imgList = []
-    for root, dirs, files in os.walk(imgDir):
-        list = files  # 列出文件夹下所有的目录与文件
-        for i in range(0, len(list)):
-            path = os.path.join(root, list[i])
-            (shortname, extname) = os.path.splitext(list[i])
-            if os.path.isfile(path) is not True:
-                continue
+def CheckDuplicatedImg(preImg, imgFile, imgList, counter, logger, threshold=0.06):
+    if len(imgList) == 0:
+        imgList.append((preImg, imgFile))
+        logger.info("img: {}".format(imgFile))
+        return False
 
-            if path.find('png') < 0:
-                continue
-
-            img = cv2.imread(path)
-            if len(imgList) == 0:
-                imgList.append((img, list[i]))
-                logger.info("img: {}".format(list[i]))
-            else:
-                logger.info("******************begin********************")
-                for item in imgList:
-                    topLeft, minVal = ImageReg.MatchTemplate(item[0], img, threshold)
-
-                    if topLeft is not None:
-                        logger.info("{} --- {}".format(list[i], item[1]))
-                        logger.info("{} topLeft: {}, minVal: {}".format(list[i], topLeft, minVal))
-
-                    if topLeft != None:
-                        break
-
-                if topLeft == None or minVal > threshold:
-                    #imgList.append((img, list[i]))
-                    logger.info("Add {}".format(list[i]))
-                    imgList.insert(0, (img, list[i]))
-                logger.info("******************end********************")
-
+    logger.info("******************begin********************")
     for item in imgList:
-        name = "{}/{}".format(saveDir, item[1])
-        cv2.imwrite(name, item[0])
-        logger.info("Save: {}".format(name))
+        topLeft, minVal = ImageReg.MatchTemplate(item[0], preImg, threshold)
+
+        if topLeft is not None:
+            logger.info("{} --- {}".format(imgFile, item[1]))
+            logger.info("{} topLeft: {}, minVal: {}".format(imgFile, topLeft, minVal))
+
+        if topLeft != None:
+            break
+
+    logger.info("******************end********************")
+
+    # There is no similar image. We should call OCR.
+    if topLeft == None or minVal > threshold:
+        return False
+
+    # There is no need to do OCR on this image.
+    return True
 
 
-def PreprocessImg(imgDir):
-    counter = 0
-    for root, dirs, files in os.walk(imgDir):
-        list = files  # 列出文件夹下所有的目录与文件
-        for i in range(0, len(list)):
-            path = os.path.join(root, list[i])
-            (shortname, extname) = os.path.splitext(list[i])
-            if os.path.isfile(path) is not True:
-                continue
+def PreprocessImg(dataDir, imgFile, counter, bOutput=True):
+    img = cv2.imread(imgFile)
+    enhanceColor = (255, 255, 255)
+    filledColor = (0, 0, 0)
+    diffVal = 10
+    avgColor = 100
 
-            if path.find('png') < 0:
-                continue
+    # Save subtitle only.
+    charImg = ImageReg.FilledSubtitleImg(img, avgColor, diffVal, filledColor)
 
-            img = cv2.imread(path)
-            enhanceColor = (255, 255, 255)
-            filledColor = (0, 0, 0)
-            diffVal = 10
-            avgColor = 100
+    if bOutput is True:
+        name = "{}/subtitle-pre-{}.png".format(dataDir, counter)
+        cv2.imwrite(name, charImg)
 
-            # Save subtitle only.
-            charImg = ImageReg.FilledSubtitleImg(img, avgColor, diffVal, filledColor)
-            name = "./tmp/02-subtitles-pre/02-subtitle-pre-{}.png".format(counter)
-            counter += 1
-            cv2.imwrite(name, charImg)
+    return charImg
 
 
-def GetSubtitlesImg(frame, counter):
+def GetSubtitlesImg(dataDir, frame, counter, bOutput=True):
     # For 1080p, subtitles in (440, 970, 440+1030, 1030+60)
     # We will get one subtitle image per 25 frames.
-    if (counter % 25) != 0:
-        return
-
     startX = 440
     startY = 970
     charOrigImg = frame[startY:startY+60, startX:startX+1030, 0:3]
-    name = "./tmp/02-subtitles/02-subtitle-{}.png".format(counter)
-    cv2.imwrite(name, charOrigImg)
-    return
+
+    # Output subtitle images.
+    if bOutput == True:
+        name = "{}/subtitle-{}.png".format(dataDir, counter)
+        cv2.imwrite(name, charOrigImg)
+
+    return name
 
 
 def ProcessVideo(videoFile, ocrReg, logger):
+    # create data tmp directory
+    (path, file) = os.path.split(videoFile)
+    (shortname, extname) = os.path.splitext(file)
+    dataDir = './record/{0}'.format(shortname)
+    if not os.path.exists(dataDir):
+        os.mkdir(dataDir)
+
+    subtitleList = []
+    imgList = []
+
+    # open video file
     cap=cv2.VideoCapture(videoFile)
 
     counter = 0
@@ -186,9 +174,6 @@ def ProcessVideo(videoFile, ocrReg, logger):
     
         if ret == True:
             counter += 1
-
-            # Get subtitles
-            GetSubtitlesImg(frame, counter)
 
             # resize displayFrame to 720p
             displayFrame = frame.copy()
@@ -199,13 +184,46 @@ def ProcessVideo(videoFile, ocrReg, logger):
             hShow = int((float(wShow) / float(w)) * float(h))
             displayFrame = cv2.resize(displayFrame, (wShow, hShow))
 
+            # show image
             cv2.imshow("video", displayFrame)
             key = cv2.waitKey(25)
             if key == ord('q'):
                 # cv2.imwrite("frame-1080p.png", frame)
                 break
+
+            if (counter % 25) != 0:
+                continue
+
+            # Get subtitle image
+            subtitleImg = GetSubtitlesImg(dataDir, frame, counter)
+
+            # Check if this subtitle is recognized.
+            preImg = PreprocessImg(dataDir, subtitleImg, counter)
+            bDuplicate = CheckDuplicatedImg(preImg, subtitleImg, imgList, counter, logger)
+
+            # 1. New image will be recognized.
+            # 2. If frame sequence can be divided exactly by 100.
+            if bDuplicate is False or (counter % 100) == 0:
+                # OCR
+                result = ocrReg.GetTextOnly(subtitleImg)
+
+                # If there is subtitle.
+                if len(result['words_result']) > 0:
+                    subtitle = result['words_result'][0]['words']
+                    subtitleList.append(subtitle)
+                    logger.info("OCR({}): {}".format(subtitleImg, subtitle))
+
+                    # Add this image to imgList for checking duplicated subtitle images.
+                    logger.info("Add {}".format(subtitleImg))
+                    imgList.insert(0, (preImg, subtitleImg))
         else:
             break
+
+    name = "{}/{}-subtitle.txt".format(path, shortname)
+    with open(name,'w') as f:
+        for sentence in subtitleList:
+            f.write(sentence)
+            f.write('\n')
 
     cap.release()
     cv2.destroyAllWindows()
@@ -240,23 +258,8 @@ def Main():
     logger = CreateLog(LOGGER_CFG_FILE)
     ocrReg = Image2OCR.OCRReg(logger)
 
-    # Test
-    # TestImgProcess(ocrReg, logger)
-
     # Treat video
-    # ProcessVideo("E:/Development/Data/TaxVideos/02.mp4", ocrReg, logger)
-    # PreprocessImg("./tmp/02-subtitles/")
-
-    # Check duplicated images
-    # CheckDuplicatedImg("./tmp/02-subtitles/", logger, 0.1, "./tmp/02-subtitles-NoDuplicated-0.1-1030x60")
-
-    # OCR
-    ProcessOCR("tmp/02-subtitles", ocrReg, logger)
-
-    # 02-subtitle-4375-我们会把剩下的三项内容讲完.png
-    # img = cv2.imread("./tmp/02-subtitles/02-subtitle-25.png")
-    # name = u"./tmp/02-subtitle-4375-我们会把剩下的三项内容讲完.png"
-    # cv2.imencode('.png', img)[1].tofile(name)
+    ProcessVideo("E:/Development/Data/TaxVideos/03.mp4", ocrReg, logger)
 
 if __name__ == '__main__':
     # noise_t = np.random.normal(loc=0, scale=0.1, size=7)

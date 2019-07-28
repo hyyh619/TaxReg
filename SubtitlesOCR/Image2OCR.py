@@ -100,7 +100,6 @@ def ProcessOCR(folder, logger):
         for i in range(0, len(list)):
             path = os.path.join(root, list[i])
             if os.path.isfile(path) and (path.find('png') >= 0 or path.find('bmp') >= 0):
-
                 if path.find('swp') >= 0 or path.find('json') >= 0:
                     continue
 
