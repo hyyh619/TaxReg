@@ -12,9 +12,9 @@ import logging
 import logging.config
 import time
 import json
+import cv2
 import FrameCap
 import KeyboardMouse
-import cv2
 import numpy as np
 import Image2OCR
 import ImageReg
@@ -259,24 +259,8 @@ def Main():
     ocrReg = Image2OCR.OCRReg(logger)
 
     # Treat video
+    # ProcessVideo("C:/Users/hyyh6/OneDrive/Development/tmp/02.mp4", ocrReg, logger)
     ProcessVideo("E:/Development/Data/TaxVideos/03.mp4", ocrReg, logger)
 
 if __name__ == '__main__':
-    # noise_t = np.random.normal(loc=0, scale=0.1, size=7)
-    # index = np.argmax(noise_t)
-    # Create logger.
-    # logger = CreateLog(LOGGER_CFG_FILE)
-
-    # main(logger)
-
-    # 1: 把双屏的图像裁剪到1920x1080
-    # 2：去掉城名的上下两根空白横线
-    # 3：去掉字符串图片的左右两边的空白
-    # 4：根据字符串图片生成一个个中文字符
-    # ProcessImgFiles('./tmp', 1)
-
-    # text = Image2OCR.ProcessOneImgOCR('./tmp/龟山城-大地图.png', logger)
-
-    # Image2OCR.ProcessOCR('./data/Pic', logger)
-
     Main()
