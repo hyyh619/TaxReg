@@ -13,6 +13,7 @@ import logging.config
 import time
 import json
 import cv2
+import sys
 import FrameCap
 import KeyboardMouse
 import numpy as np
@@ -154,7 +155,45 @@ def GetSubtitlesImg(dataDir, frame, counter, bOutput=True):
     return name
 
 
-def ProcessVideo(videoFile, ocrReg, logger):
+def ProcessSubtitleOnly(imgList, subtitleList, dataDir, frame, counter, ocrReg, logger):
+    # Get subtitle image
+    subtitleImg = GetSubtitlesImg(dataDir, frame, counter)
+
+    # Check if this subtitle is recognized.
+    preImg = PreprocessImg(dataDir, subtitleImg, counter)
+    bDuplicate = CheckDuplicatedImg(preImg, subtitleImg, imgList, counter, logger)
+
+    # 1. New image will be recognized.
+    # 2. If frame sequence can be divided exactly by 100.
+    if bDuplicate is False or (counter % 100) == 0:
+        # OCR
+        result = ocrReg.GetTextOnly(subtitleImg)
+
+        # If there is subtitle.
+        if len(result['words_result']) > 0:
+            subtitle = result['words_result'][0]['words']
+            subtitleList.append(subtitle)
+            logger.info("OCR({}): {}".format(subtitleImg, subtitle))
+
+            # Add this image to imgList for checking duplicated subtitle images.
+            logger.info("Add {}".format(subtitleImg))
+            imgList.insert(0, (preImg, subtitleImg))
+
+
+def ProcessFullScreen(subtitleList, dataDir, frame, counter, ocrReg, logger):
+    # Write frame to file
+    name = "{}/subtitle-{}.jpg".format(dataDir, counter)
+    cv2.imwrite(name, frame)
+
+    result = ocrReg.GetTextOnly(name)
+    if len(result['words_result']) > 0:
+        for text in result['words_result']:
+            subtitle = text['words']
+            subtitleList.append(subtitle)
+            logger.info("OCR({}): {}".format(name, subtitle))
+
+
+def ProcessVideo(videoFile, ocrReg, logger, bFullScreen = True):
     # create data record directory
     dataDir = './record'
     if not os.path.exists(dataDir):
@@ -175,7 +214,7 @@ def ProcessVideo(videoFile, ocrReg, logger):
     counter = 0
     while (True):
         ret, frame = cap.read()
-    
+
         if ret == True:
             counter += 1
 
@@ -198,28 +237,10 @@ def ProcessVideo(videoFile, ocrReg, logger):
             if (counter % 25) != 0:
                 continue
 
-            # Get subtitle image
-            subtitleImg = GetSubtitlesImg(dataDir, frame, counter)
-
-            # Check if this subtitle is recognized.
-            preImg = PreprocessImg(dataDir, subtitleImg, counter)
-            bDuplicate = CheckDuplicatedImg(preImg, subtitleImg, imgList, counter, logger)
-
-            # 1. New image will be recognized.
-            # 2. If frame sequence can be divided exactly by 100.
-            if bDuplicate is False or (counter % 100) == 0:
-                # OCR
-                result = ocrReg.GetTextOnly(subtitleImg)
-
-                # If there is subtitle.
-                if len(result['words_result']) > 0:
-                    subtitle = result['words_result'][0]['words']
-                    subtitleList.append(subtitle)
-                    logger.info("OCR({}): {}".format(subtitleImg, subtitle))
-
-                    # Add this image to imgList for checking duplicated subtitle images.
-                    logger.info("Add {}".format(subtitleImg))
-                    imgList.insert(0, (preImg, subtitleImg))
+            if bFullScreen is False:
+                ProcessFullScreen(subtitleList, dataDir, frame, counter, ocrReg, logger)
+            else:
+                ProcessSubtitleOnly(imgList, subtitleList, dataDir, frame, counter, ocrReg, logger)
         else:
             break
 
@@ -259,12 +280,33 @@ def ProcessOCR(imgDir, ocrReg, logger):
 
 
 def Main():
+    # Create logger
     logger = CreateLog(LOGGER_CFG_FILE)
+
+    # Video recognize mode.
+    bFullScreen = True
+
+    # Parse arguments.
+    argc = len(sys.argv)
+    if argc < 2:
+        logger.err("There is no video input")
+    elif argc == 2:
+        videoFile = sys.argv[1]
+    elif argc == 3:
+        videoFile = sys.argv[1]
+        if sys.argv[2].find("True") >= 0:
+            bFullScreen = True
+        else:
+            bFullScreen = False
+
+    # Create OCR recognizer.
     ocrReg = Image2OCR.OCRReg(logger)
 
     # Treat video
     # ProcessVideo("C:/Users/hyyh6/OneDrive/Development/tmp/02.mp4", ocrReg, logger)
-    ProcessVideo("E:/Development/Data/TaxVideos/03.mp4", ocrReg, logger)
+
+    logger.info("Treat video: {}, FullScreen: {}".format(videoFile, bFullScreen))
+    ProcessVideo(videoFile, ocrReg, logger, bFullScreen)
 
 if __name__ == '__main__':
     Main()
