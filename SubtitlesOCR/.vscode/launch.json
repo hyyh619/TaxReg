@@ -1,7 +1,7 @@
 {
-    // 使用 IntelliSense 了解相关属性。 
-    // 悬停以查看现有属性的描述。
-    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    // 使用 IntelliSense 了解相关属性�?
+    // 悬停以查看现有属性的描述�?
+    // 欲了解更多信息，请访�? https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
@@ -13,12 +13,12 @@
             "pythonPath": "E:/tools/Anaconda3/envs/tensorflow-python35/python.exe"
         },        
         {
-            "name": "Python-SurfaceGo: Main.py",
+            "name": "Python-SurfaceGo",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/Main.py",
+            "program": "${file}",
             "cwd": "./",
-            "pythonPath": "C:/Users/hyyh6/AppData/Local/conda/conda/envs/tensorflow-python35/python.exe"
+            "pythonPath": "C:/Users/hyyh6/.conda/envs/py37/python.exe"
         },
         {
             "name": "Python-MSI: Current File",
