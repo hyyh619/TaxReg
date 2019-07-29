@@ -155,11 +155,6 @@ def GetSubtitlesImg(dataDir, frame, counter, bOutput=True):
 
 
 def ProcessVideo(videoFile, ocrReg, logger):
-    # Create logger directory
-    dataDir = './log'
-    if not os.path.exists(dataDir):
-        os.mkdir(dataDir)
-
     # create data record directory
     dataDir = './record'
     if not os.path.exists(dataDir):
