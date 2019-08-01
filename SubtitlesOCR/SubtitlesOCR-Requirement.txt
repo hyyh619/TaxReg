@@ -1,4 +1,14 @@
-conda install -c conda-forge opencv
+1. OpenCV安装：
+可以用conda装opencv，命令如下：conda install -c conda-forge opencv
+也可以用pip安装，pip安装命令：pip install opencv-python
+
+2. 其他模块都用pip安装，命令如下：
 pip install baidu-aip
 pip install schedule
 pip install pynput
+
+3. 申请baidu云的账号
+并填入Image2OCR.py
+BAIDU_OCR_APP_ID      = 'xxxxxxx'
+BAIDU_OCR_API_KEY     = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+BAIDU_OCR_SECRET_KEY  = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
