@@ -22,7 +22,11 @@
             "request": "launch",
             "program": "${file}",
             "cwd": "./",
-            "pythonPath": "C:/Users/hyyh6/.conda/envs/py37/python.exe"
+            "pythonPath": "C:/Users/hyyh6/.conda/envs/py37/python.exe",
+            "args": [
+                "C:/Users/hyyh6/OneDrive/Development/tmp/02.mp4",
+                "False"
+            ]
         },
         {
             "name": "Python-MSI: Current File",
