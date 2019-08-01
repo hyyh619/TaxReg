@@ -237,7 +237,7 @@ def ProcessVideo(videoFile, ocrReg, logger, bFullScreen = True):
             if (counter % 25) != 0:
                 continue
 
-            if bFullScreen is False:
+            if bFullScreen is True:
                 ProcessFullScreen(subtitleList, dataDir, frame, counter, ocrReg, logger)
             else:
                 ProcessSubtitleOnly(imgList, subtitleList, dataDir, frame, counter, ocrReg, logger)
