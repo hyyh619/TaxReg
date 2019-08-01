@@ -239,13 +239,16 @@ def ProcessVideo(videoFile, ocrReg, logger, bFullScreen = True):
 
             if bFullScreen is True:
                 ProcessFullScreen(subtitleList, dataDir, frame, counter, ocrReg, logger)
+
+                # if counter == 500:
+                #     break
             else:
                 ProcessSubtitleOnly(imgList, subtitleList, dataDir, frame, counter, ocrReg, logger)
         else:
             break
 
     name = "{}/{}-subtitle.txt".format(path, shortname)
-    with open(name,'w') as f:
+    with open(name,'w', encoding='utf-8') as f:
         for sentence in subtitleList:
             f.write(sentence)
             f.write('\n')
